@@ -1,21 +1,28 @@
 {
-  "name": "Holb Checker thing 2.0",
+  "name": "Holberton Checker Helper",
   "version": "1.0",
-  "description": "This will hopefully do sometign with the DOM",
+  "description": "Helpful tool for keeping track of the checker on a project page.",
   "manifest_version": 2,
+
 	"background": {
 		"scripts": ["background.js"],
 		"persistent": false
 	},
-  "permissions": ["storage", "activeTab"],
+
+  "permissions": ["declarativeContent", "storage", "activeTab"],
+
   "content_scripts": [
 		{
-			"matches": ["https://intranet.hbtn.io/projects/*"],
+			"matches": ["<all_urls>"],
 			"js": ["content.js"]
 		}
 	],
 	
-	"icons": {
+	"page_action": {
+		"default_popup": "popup.html"
+	},
+
+  "icons": {
 		"16": "images/holb_logo16.png",
 		"32": "images/holb_logo32.png",
 		"48": "images/holb_logo48.png",
