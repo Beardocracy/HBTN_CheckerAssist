@@ -3,29 +3,30 @@
   "version": "1.0",
   "description": "Helpful tool for keeping track of the checker on a project page.",
   "manifest_version": 2,
-
+  "permissions": ["declarativeContent", "storage"],
 	"background": {
 		"scripts": ["background.js"],
 		"persistent": false
 	},
-
-  "permissions": ["declarativeContent", "storage", "activeTab"],
-
-  "content_scripts": [
-		{
-			"matches": ["<all_urls>"],
-			"js": ["content.js"]
-		}
-	],
-	
 	"page_action": {
-		"default_popup": "popup.html"
+		"default_popup": "popup.html",
+    "default_icons": {
+      "16": "images/holb_logo16.png",
+      "32": "images/holb_logo32.png",
+      "48": "images/holb_logo48.png",
+      "128": "images/holb_logo128.png"
+    }
 	},
-
   "icons": {
 		"16": "images/holb_logo16.png",
 		"32": "images/holb_logo32.png",
 		"48": "images/holb_logo48.png",
 		"128": "images/holb_logo128.png"
-  }
+  },
+  "content_scripts": [
+		{
+			"matches": ["https://intranet.hbtn.io/projects/*"],
+			"js": ["content.js"]
+		}
+	]
 }

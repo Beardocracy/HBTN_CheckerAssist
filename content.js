@@ -1,5 +1,13 @@
-const button = document.querySelector('#task-test-correction-914-correction-modal > div > div > div.modal-body > div.actions > center > input');
+const url = window.location.href;
+console.log(url);
+const title = document.querySelector('body > main > article > h1');
 
-button.addEventListener('click', function () {
-  alert("It really took you all day to get to this point?");
-}, false);
+console.log(title.innerHTML);
+
+chrome.storage.sync.set({'title': title.innerHTML}, () => {
+  console.log('Project Title: ' + title.innerHTML);
+});
+
+chrome.storage.sync.get(['title'], (result) => {
+  console.log('Stored title: ' + result.title);
+});
